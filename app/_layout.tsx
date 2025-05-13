@@ -1,10 +1,7 @@
 import "expo-dev-client";
 import "../global.css";
 
-import {
-  useColorScheme,
-  useInitialAndroidBarSync,
-} from "@/lib/use-color-scheme";
+import { useColorScheme } from "@/lib/use-color-scheme";
 import { NAV_THEME } from "@/theme/";
 import { ThemeProvider as NavThemeProvider } from "@react-navigation/native";
 import { Stack } from "expo-router";
@@ -17,27 +14,20 @@ export {
 } from "expo-router";
 
 export default function RootLayout() {
-  useInitialAndroidBarSync();
-  const { colorScheme, isDarkColorScheme } = useColorScheme();
+  const { colorScheme } = useColorScheme();
 
   return (
-    <>
-      <StatusBar
-        key={`root-status-bar-${isDarkColorScheme ? "light" : "dark"}`}
-        style={isDarkColorScheme ? "light" : "dark"}
-      />
-
-      <NavThemeProvider value={NAV_THEME[colorScheme]}>
-        <Stack>
-          <Stack.Screen
-            name="index"
-            options={{
-              title: "EVM Wallet Generator",
-            }}
-          />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-      </NavThemeProvider>
-    </>
+    <NavThemeProvider value={NAV_THEME[colorScheme]}>
+      <Stack>
+        <Stack.Screen
+          name="(tabs)"
+          options={{
+            title: "EVM Wallet Generator",
+          }}
+        />
+        <Stack.Screen name="+not-found" />
+      </Stack>
+      <StatusBar style="auto" />
+    </NavThemeProvider>
   );
 }
