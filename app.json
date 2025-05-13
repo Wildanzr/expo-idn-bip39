@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ethereum-wallet-generator",
+    "name": "EVM Wallet Generator",
     "slug": "ethereum-wallet-generator",
     "version": "1.0.0",
     "orientation": "portrait",
